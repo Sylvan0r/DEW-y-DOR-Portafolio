@@ -1,52 +1,82 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Portafolio Profesional</title>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     </head>
 
-    <body class="w-screen animated-background h-screen bg-gradient-to-r from-blue-500 via-blue-500 to-indigo-500">
+    <body class="w-full h-screen animated-background bg-gradient-to-r from-blue-500 via-blue-500 to-indigo-500">
         <div id="app" class="min-h-screen p-6">
-            <!-- HEADER -->
+            <!-- Header de la pagina -->
             <header class="text-center mb-10">
                 <h1 class="text-4xl font-bold">Portafolio de</h1>
                 <h1 id="portName" class="text-4xl font-extrabold text-white"></h1>
             </header>
 
-            <!-- MAIN GRID -->
             <main class="max-w-7xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-3">
+                <aside class="bg-gray-50 p-8 border-r border-gray-200 flex flex-col items-center overflow-hidden">
+                    <!-- Seccion de la foto y bio -->
+                    <div class="flex flex-col items-center text-center w-full">
+                        <img id="profilePic" class="w-36 h-36 rounded-full object-cover shadow-lg mb-4 border-4 border-white" alt="Foto de perfil">
 
-                <!-- LEFT PANEL -->
-                <aside class="bg-gray-50 p-8 flex flex-col items-center border-r border-gray-200">
-                    <img id="profilePic" class="w-40 h-40 rounded-full object-cover shadow mb-6" alt="Foto de perfil">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Sobre Mí</h2>
+                        <p id="bio" class="text-gray-600 px-2"></p>
+                    </div>
 
-                    <h2 class="text-2xl font-semibold mb-4 text-center">Sobre Mí</h2>
-                    <p id="bio" class="text-gray-700 text-center"></p>
-                    <p id="telf" class="text-gray-700 text-center mt-4 font-bold"></p>
-                    <p id="email" class="text-gray-700 text-center mt-4 font-bold"></p>
+                    <div class="w-full border-t border-gray-300 my-6"></div>
 
-                    <h3 class="text-xl font-semibold mt-4 mb-4 text-center">Frameworks con los que trabajo</h3>
-                    <div id="skills" class="flex flex-wrap gap-4 mt-4"></div>
+                    <!-- Información personal -->
+                    <div class="w-full space-y-3 px-2">
+                        <div class="flex items-center gap-3">                            
+                            <p id="email" class="text-gray-700 font-medium break-words"></p>
+                        </div>
 
+                        <div class="flex items-center gap-3">                            
+                            <p id="telf" class="text-gray-700 font-medium break-words"></p>
+                        </div>
+
+                        <div class="flex items-center gap-3">                            
+                            <p id="genero" class="text-gray-700 font-medium break-words"></p>
+                        </div>
+
+                        <div class="flex items-center gap-3">                            
+                            <p id="nacionalidad" class="text-gray-700 font-medium break-words"></p>
+                        </div>
+
+                        <div class="flex items-center gap-3">                            
+                            <p id="fechaNacimiento" class="text-gray-700 font-medium break-words"></p>
+                        </div>
+
+                        <div class="flex items-center gap-3">                            
+                            <p id="direccion" class="text-gray-700 font-medium break-words"></p>
+                        </div>
+                    </div>
+
+                    <div class="w-full border-t border-gray-300 my-6"></div>
+
+                    <!-- Habilidades / Frameworks -->
+                    <div class="w-full text-center">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Frameworks con los que trabajo</h3>
+                        <div id="skills" class="flex flex-wrap justify-center gap-4"></div>
+                    </div>
                 </aside>
 
-                <!-- RIGHT PANEL -->
+                <!-- Sección de experiencia y proyectos -->
                 <section class="md:col-span-2 p-10">
 
-                    <!-- EXPERIENCIA -->
+                    <!-- Experiencia -->
                     <div id="experience" class="mb-10">
                         <h2 class="text-3xl font-semibold mb-4 text-blue-600">Experiencia Laboral</h2>
                         <div id="experienceList" class="space-y-3 text-gray-700 list-disc list-inside"></div>
                     </div>
 
-                    <!-- PROYECTOS -->
+                    <!-- Proyectos -->
                     <div id="projects">
                         <h2 class="text-3xl font-semibold mb-4 text-blue-600">Proyectos</h2>
                         <div id="projectsList" class="space-y-3 text-gray-700 list-disc list-inside"></div>
                     </div>
                 </section>
-
             </main>
         </div>
 

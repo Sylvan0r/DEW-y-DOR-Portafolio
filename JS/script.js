@@ -1,12 +1,14 @@
-/* ============================================================
-   OBJETO PRINCIPAL: misDatos  (RA2.a)
-============================================================ */
+/* Datos */
 const misDatos = {
     personales: {
         nombre: "Adriano Martín Lorenzo",
         email: "adfor409@gmail.com",
         telefono: "621038879",
         bio: "¡Buenas! Soy Adriano Martín Lorenzo, un programador que le gusta afrontar nuevos retos y aprender cosas nuevas cada día. Me encanta la tecnología y todo lo relacionado con las tecnologías en general.",
+        genero: "Masculino",
+        nacionalidad: "Española",
+        fechaNacimiento: "04/08/2005",
+        direccion: "Calle Retamar Santa Cruz de la Palma, España",
         foto: "IMG/placeholderUser.jpg",
         habilidades: [
             "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png",
@@ -43,32 +45,23 @@ const misDatos = {
             nombre: "Portafolio Personal",
             descripcion: "Desarrollé un portafolio personal para mostrar mis proyectos y habilidades como desarrollador web.",
             tecnologias: ["HTML", "CSS", "JavaScript"],
-            enlace: null
-        },
-        {
-            img: "",
-            nombre: "Portafolio Personal",
-            descripcion: "Desarrollé un portafolio personal para mostrar mis proyectos y habilidades como desarrollador web.",
-            tecnologias: ["HTML", "CSS", "JavaScript"],
-            enlace: "null"
-        },
+            enlace: "https://github.com/Sylvan0r/DEW-y-DOR-Portafolio"
+        }        
     ]
 };
 
-
-/* ============================================================
-   RENDERIZAR DATOS PERSONALES EN EL HTML (RA2.b)
-============================================================ */
+/* Mostrar info dentro del html */
 document.getElementById("portName").textContent = misDatos.personales.nombre;
 document.getElementById("bio").textContent = misDatos.personales.bio;
 document.getElementById("telf").textContent = "Teléfono: " + misDatos.personales.telefono;
 document.getElementById("email").textContent = "Email: " + misDatos.personales.email;
 document.getElementById("profilePic").src = misDatos.personales.foto;
+document.getElementById("genero").textContent = "Género: " + misDatos.personales.genero;
+document.getElementById("nacionalidad").textContent = "Nacionalidad: " + misDatos.personales.nacionalidad;
+document.getElementById("fechaNacimiento").textContent = "Fecha de Nacimiento: " + misDatos.personales.fechaNacimiento;
+document.getElementById("direccion").textContent = "Dirección: " + misDatos.personales.direccion;
 
-
-/* ============================================================
-   RENDERIZAR HABILIDADES (DOM dinámico) (RA2.c)
-============================================================ */
+/* Mostrar frameworks que se */
 const skillsContainer = document.getElementById("skills");
 
 misDatos.personales.habilidades.forEach(iconUrl => {
@@ -81,14 +74,11 @@ misDatos.personales.habilidades.forEach(iconUrl => {
     skillsContainer.appendChild(img);
 });
 
-
-/* ============================================================
-   RENDERIZAR EXPERIENCIA LABORAL (RA2.e)
-============================================================ */
+/* Mostrar contenidos de parte de experiencia laboral */
 const experienceList = document.getElementById("experienceList");
 
 experienceList.innerHTML = misDatos.experiencia.map(exp => `
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-4 experienceCard">
         <img src="${exp.img}" class="w-20 h-20 rounded-full border object-cover">
         <div>
             <p><strong>Empresa:</strong> ${exp.empresa}</p>
@@ -99,14 +89,12 @@ experienceList.innerHTML = misDatos.experiencia.map(exp => `
     </div>
 `).join("");
 
-/* ============================================================
-   RENDERIZAR PROYECTOS (RA2.f)
-============================================================ */
+/* Mostrar contenidos de parte de proyectos */
 const projectsList = document.getElementById("projectsList");
 const placeholderProject = "IMG/placeholderProject.png";
 
 projectsList.innerHTML = misDatos.proyectos.map(proj => `
-    <div class="flex items-center gap-4 project-card cursor-pointer">
+    <div class="flex items-center gap-4 projectCard cursor-pointer">
         <img src="${proj.img || placeholderProject}" class="w-20 h-20 rounded-full border object-cover">
 
         <div>
@@ -118,18 +106,8 @@ projectsList.innerHTML = misDatos.proyectos.map(proj => `
     </div>
 `).join("");
 
-/* ============================================================
-   EVENTOS (RA2.g y RA2.h)
-============================================================ */
-
-// Evento: Ocultar/mostrar biografía al hacer clic en el nombre
-document.getElementById("portName").addEventListener("click", () => {
-    const bio = document.getElementById("bio");
-    bio.classList.toggle("hidden");
-});
-
-// Hover animado en proyectos
-document.querySelectorAll(".project-card").forEach(card => {
+/* Hacer mas grande tanto las experiencias como proyectos al pasar por encima */
+document.querySelectorAll(".projectCard").forEach(card => {
     card.addEventListener("mouseenter", () => {
         card.classList.add("scale-[1.02]", "transition-transform");
     });
@@ -138,13 +116,22 @@ document.querySelectorAll(".project-card").forEach(card => {
     });
 });
 
-// Evento extra: Al hacer clic en un proyecto muestra alerta (o modal si quieres)
-document.querySelectorAll(".project-card").forEach((card, index) => {
+document.querySelectorAll(".experienceCard").forEach(card => {
+    card.addEventListener("mouseenter", () => {
+        card.classList.add("scale-[1.02]", "transition-transform");
+    });
+    card.addEventListener("mouseleave", () => {
+        card.classList.remove("scale-[1.02]");
+    });
+});
+
+/* Al hacer click en un proyecto te manda al github de este */
+document.querySelectorAll(".projectCard").forEach((card, index) => {
     card.addEventListener("click", () => {
         if(misDatos.proyectos[index].enlace == null) {
             alert("Has seleccionado el proyecto: " + misDatos.proyectos[index].nombre);
         }else{
-            window.open(misDatos.proyectos[index].enlace);
+            window.open(misDatos.proyectos[index].enlace, '_blank');
         }
     });
 });
