@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portafolio Profesional</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+
+    <body class="bg-gray-100 text-gray-900">
+        <div id="app" class="min-h-screen p-6">
+            <!-- HEADER -->
+            <header class="text-center mb-10">
+                <h1 class="text-4xl font-bold">Portafolio de</h1>
+                <h1 id="portName" class="text-4xl font-extrabold text-indigo-600"></h1>
+            </header>
+
+            <!-- MAIN GRID -->
+            <main class="max-w-7xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-3">
+
+                <!-- LEFT PANEL -->
+                <aside class="bg-gray-50 p-8 flex flex-col items-center border-r border-gray-200">
+                    <img id="profilePic" class="w-40 h-40 rounded-full object-cover shadow mb-6" alt="Foto de perfil">
+
+                    <h2 class="text-2xl font-semibold mb-4 text-center">Sobre Mí</h2>
+                    <p id="bio" class="text-gray-700 text-center"></p>
+
+                    <h3 class="text-xl font-semibold mt-4 mb-4 text-center">Frameworks con los que trabajo</h3>
+                    
+                </aside>
+
+                <!-- RIGHT PANEL -->
+                <section class="md:col-span-2 p-10">
+
+                    <!-- EXPERIENCIA -->
+                    <div id="experience" class="mb-10">
+                        <h2 class="text-3xl font-semibold mb-4 text-indigo-600">Experiencia Laboral</h2>
+                        <ul id="experienceList" class="space-y-3 text-gray-700 list-disc list-inside"></ul>
+                    </div>
+
+                    <!-- PROYECTOS -->
+                    <div id="projects">
+                        <h2 class="text-3xl font-semibold mb-4 text-indigo-600">Proyectos</h2>
+                        <ul id="projectsList" class="space-y-3 text-gray-700 list-disc list-inside"></ul>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+        <script src="JS/script.js"></script>
+    </body>
+</html>
