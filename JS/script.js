@@ -33,9 +33,9 @@ const misDatos = {
             img: "https://media.licdn.com/dms/image/v2/C4D0BAQGgM2oQNJjAXQ/company-logo_200_200/company-logo_200_200/0/1639180183380?e=2147483647&v=beta&t=B5uPylE0aL6A-pCb-t8mI29ciay6xwXU_9s00-jBL3g",
             empresa: "Robootics",
             puesto: "Prácticas",
-            fechaInicio: "Enero 2020",
-            fechaFin: "Diciembre 2021",
-            tecnologias: ["HTML", "CSS", "JavaScript", "Java"]
+            fechaInicio: "Mayo 2025",
+            fechaFin: "Junio 2025",
+            tecnologias: ["Mysql", "Java"]
         }
     ],
 
