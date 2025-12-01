@@ -16,7 +16,8 @@ const misDatos = {
             "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/512px-Unofficial_JavaScript_logo_2.svg.png",
             "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg",
             "https://pngimg.com/uploads/mysql/mysql_PNG9.png",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1280px-PHP-logo.svg.png"
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1280px-PHP-logo.svg.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1154px-Laravel.svg.png"
         ]
     },
 
@@ -46,7 +47,14 @@ const misDatos = {
             descripcion: "Desarrollé un portafolio personal para mostrar mis proyectos y habilidades como desarrollador web.",
             tecnologias: ["HTML", "CSS", "JavaScript"],
             enlace: "https://github.com/Sylvan0r/DEW-y-DOR-Portafolio"
-        }        
+        },
+        {
+            img: "https://i.pinimg.com/474x/e6/30/b1/e630b1373a0a0e06e1425ae533f424f4.jpg",
+            nombre: "Juego de Memoria",
+            descripcion: "Juego de memoria simple desarrollado con HTML, CSS y JavaScript donde los jugadores deben encontrar pares de cartas iguales.",
+            tecnologias: ["HTML", "CSS", "JavaScript"],
+            enlace: "PROYECTS/Act2/index.html"
+        }   
     ]
 };
 
@@ -59,7 +67,6 @@ document.getElementById("profilePic").src = misDatos.personales.foto;
 document.getElementById("genero").textContent = "Género: " + misDatos.personales.genero;
 document.getElementById("nacionalidad").textContent = "Nacionalidad: " + misDatos.personales.nacionalidad;
 document.getElementById("fechaNacimiento").textContent = "Fecha de Nacimiento: " + misDatos.personales.fechaNacimiento;
-document.getElementById("direccion").textContent = "Dirección: " + misDatos.personales.direccion;
 
 /* Mostrar frameworks que se */
 const skillsContainer = document.getElementById("skills");
@@ -101,7 +108,6 @@ projectsList.innerHTML = misDatos.proyectos.map(proj => `
             <p><strong>Nombre:</strong> ${proj.nombre}</p>
             <p><strong>Descripción:</strong> ${proj.descripcion}</p>
             <p><strong>Tecnologías:</strong> ${proj.tecnologias.join(", ")}</p>
-            <p><strong>Enlace:</strong> ${proj.enlace || "No disponible"}</p>
         </div>
     </div>
 `).join("");
