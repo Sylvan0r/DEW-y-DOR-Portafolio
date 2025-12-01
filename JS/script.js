@@ -4,7 +4,7 @@ const misDatos = {
         nombre: "Adriano Martín Lorenzo",
         email: "adfor409@gmail.com",
         telefono: "621 03 88 79",
-        bio: "¡Buenas! Soy Adriano Martín Lorenzo, un programador que le gusta afrontar nuevos retosy aprender nuevas cosas sobre la tecnología.",
+        bio: "¡Buenas! Soy Adriano Martín Lorenzo, un programador que le gusta afrontar nuevos retos y aprender nuevas cosas sobre la tecnología.",
         genero: "Masculino",
         nacionalidad: "Española",
         fechaNacimiento: "04/08/2005",
@@ -19,15 +19,6 @@ const misDatos = {
             "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1154px-Laravel.svg.png"
         ]
     },
-
-    estudios: [
-        {
-            titulo: "Técnico Superior en Desarrollo de Aplicaciones Web",
-            centro: "IES Ejemplo",
-            año: "2023"
-        }
-    ],
-
     experiencia: [
         {
             img: "https://media.licdn.com/dms/image/v2/C4D0BAQGgM2oQNJjAXQ/company-logo_200_200/company-logo_200_200/0/1639180183380?e=2147483647&v=beta&t=B5uPylE0aL6A-pCb-t8mI29ciay6xwXU_9s00-jBL3g",
@@ -38,7 +29,6 @@ const misDatos = {
             tecnologias: ["Mysql", "Java"]
         }
     ],
-
     proyectos: [
         {
             img: "",
@@ -56,15 +46,15 @@ const misDatos = {
         },
         {
             img: "https://cdn-icons-png.flaticon.com/512/528/528105.png",
-            nombre: "Snake Game",
+            nombre: "Snake Game+",
             descripcion: "Juego clásico de Snake desarrollado con HTML, CSS y JavaScript donde los jugadores controlan una serpiente para comer comida y crecer sin chocar contra las paredes o a sí mismos.",
             tecnologias: ["HTML", "CSS", "JavaScript"],
             enlace: "PROYECTS/Snake/index.html"
-        }   
+        }
     ]
 };
 
-/* Mostrar info dentro del html */
+/* Mostrar info */
 document.getElementById("portName").textContent = misDatos.personales.nombre;
 document.getElementById("bio").textContent = misDatos.personales.bio;
 document.getElementById("telf").textContent = "Teléfono: " + misDatos.personales.telefono;
@@ -74,22 +64,17 @@ document.getElementById("genero").textContent = "Género: " + misDatos.personale
 document.getElementById("nacionalidad").textContent = "Nacionalidad: " + misDatos.personales.nacionalidad;
 document.getElementById("fechaNacimiento").textContent = "Fecha de Nacimiento: " + misDatos.personales.fechaNacimiento;
 
-/* Mostrar frameworks que se */
+/* Frameworks */
 const skillsContainer = document.getElementById("skills");
-
 misDatos.personales.habilidades.forEach(iconUrl => {
     const img = document.createElement("img");
     img.src = iconUrl;
-
-    img.className =
-        "w-10 h-10 object-contain transition-transform hover:scale-110 cursor-pointer";
-
+    img.className = "w-10 h-10 object-contain transition-transform hover:scale-110 cursor-pointer";
     skillsContainer.appendChild(img);
 });
 
-/* Mostrar contenidos de parte de experiencia laboral */
+/* Experiencia */
 const experienceList = document.getElementById("experienceList");
-
 experienceList.innerHTML = misDatos.experiencia.map(exp => `
     <div class="flex items-center gap-4 experienceCard">
         <img src="${exp.img}" class="w-20 h-20 rounded-full border object-cover">
@@ -102,14 +87,12 @@ experienceList.innerHTML = misDatos.experiencia.map(exp => `
     </div>
 `).join("");
 
-/* Mostrar contenidos de parte de proyectos */
+/* Proyectos */
 const projectsList = document.getElementById("projectsList");
 const placeholderProject = "IMG/placeholderProject.png";
-
 projectsList.innerHTML = misDatos.proyectos.map(proj => `
     <div class="flex items-center gap-4 projectCard cursor-pointer">
         <img src="${proj.img || placeholderProject}" class="w-20 h-20 rounded-full border object-cover">
-
         <div>
             <p><strong>Nombre:</strong> ${proj.nombre}</p>
             <p><strong>Descripción:</strong> ${proj.descripcion}</p>
@@ -118,32 +101,76 @@ projectsList.innerHTML = misDatos.proyectos.map(proj => `
     </div>
 `).join("");
 
-/* Hacer mas grande tanto las experiencias como proyectos al pasar por encima */
-document.querySelectorAll(".projectCard").forEach(card => {
-    card.addEventListener("mouseenter", () => {
-        card.classList.add("scale-[1.02]", "transition-transform");
-    });
-    card.addEventListener("mouseleave", () => {
-        card.classList.remove("scale-[1.02]");
-    });
+// Hover
+document.querySelectorAll(".projectCard, .experienceCard").forEach(card => {
+    card.addEventListener("mouseenter", () => card.classList.add("scale-[1.02]", "transition-transform"));
+    card.addEventListener("mouseleave", () => card.classList.remove("scale-[1.02]"));
 });
 
-document.querySelectorAll(".experienceCard").forEach(card => {
-    card.addEventListener("mouseenter", () => {
-        card.classList.add("scale-[1.02]", "transition-transform");
-    });
-    card.addEventListener("mouseleave", () => {
-        card.classList.remove("scale-[1.02]");
-    });
-});
-
-/* Al hacer click en un proyecto te manda al github de este */
+// Click proyectos
 document.querySelectorAll(".projectCard").forEach((card, index) => {
     card.addEventListener("click", () => {
-        if(misDatos.proyectos[index].enlace == null) {
-            alert("Has seleccionado el proyecto: " + misDatos.proyectos[index].nombre);
-        }else{
-            window.open(misDatos.proyectos[index].enlace, '_blank');
-        }
+        const enlace = misDatos.proyectos[index].enlace;
+        if(!enlace) alert("Has seleccionado el proyecto: " + misDatos.proyectos[index].nombre);
+        else window.open(enlace, '_blank');
     });
+});
+
+/* Toggle Dark Mode */
+const themeToggleBtn = document.getElementById("themeToggle");
+themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    
+    // Cambiar estilo de todo
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.getElementById("mainContent");
+
+    if(document.body.classList.contains("dark")){
+        themeToggleBtn.textContent = "☀︎";
+        document.body.style.background = "linear-gradient(to bottom, #1f2937, #374151, #4b5563)";
+        document.body.style.transition = "background 0.5s";
+        sidebar.style.backgroundColor = "#1f2937";
+        sidebar.style.transition = "background-color 0.5s";
+        document.getElementById("expTxt").style.color = "#1f2937";
+        document.getElementById("projTxt").style.color = "#1f2937";
+        document.getElementById("aboutMe").style.color = "#ffffffcc";
+        document.getElementById("frameWorks").style.color = "#ffffffcc";
+        document.getElementById("portName").style.color = "#ffffffcc";
+        document.getElementById("bio").style.color = "#ffffffcc";
+        document.getElementById("email").style.color = "#ffffffcc";
+        document.getElementById("telf").style.color = "#ffffffcc";
+        document.getElementById("genero").style.color = "#ffffffcc";
+        document.getElementById("nacionalidad").style.color = "#ffffffcc";
+        document.getElementById("fechaNacimiento").style.color = "#ffffffcc";
+        document.getElementById("themeToggle").style.backgroundColor = "#374151";
+        document.getElementById("themeToggle").style.color = "#ffffffcc";
+        document.getElementById("bio").style.transition = "color 0.5s";
+        document.getElementById("email").style.transition = "color 0.5s";
+        document.getElementById("telf").style.transition = "color 0.5s";
+        document.getElementById("genero").style.transition = "color 0.5s";
+        document.getElementById("nacionalidad").style.transition = "color 0.5s";
+        document.getElementById("fechaNacimiento").style.transition = "color 0.5s";
+        document.getElementById("aboutMe").style.transition = "color 0.5s";
+        document.getElementById("frameWorks").style.transition = "color 0.5s";
+        document.getElementById("portName").style.transition = "color 0.5s";
+        document.getElementById("expTxt").style.transition = "color 0.5s";
+        document.getElementById("projTxt").style.transition = "color 0.5s";
+    } else {
+        themeToggleBtn.textContent = "☽";
+        document.body.style.background = "linear-gradient(to bottom, oklch(82.8% 0.111 230.318), oklch(80.9% 0.105 251.813), oklch(45.7% 0.24 277.023))";
+        sidebar.style.backgroundColor = "#f9fafb";
+        document.getElementById("bio").style.color = "#000000ff";
+        document.getElementById("email").style.color = "#000000ff";
+        document.getElementById("telf").style.color = "#000000ff";
+        document.getElementById("genero").style.color = "#000000ff";
+        document.getElementById("nacionalidad").style.color = "#000000ff";
+        document.getElementById("fechaNacimiento").style.color = "#000000ff";     
+        document.getElementById("aboutMe").style.color = "#000000ff";
+        document.getElementById("frameWorks").style.color = "#000000ff";
+        document.getElementById("portName").style.color = "oklch(54.6% 0.245 262.881)";
+        document.getElementById("expTxt").style.color = "oklch(54.6% 0.245 262.881)";
+        document.getElementById("projTxt").style.color = "oklch(54.6% 0.245 262.881)";
+        document.getElementById("themeToggle").style.backgroundColor = "#ffffffcc";
+        document.getElementById("themeToggle").style.color = "#374151";
+    }
 });

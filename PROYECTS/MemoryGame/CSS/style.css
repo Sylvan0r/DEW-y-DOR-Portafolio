@@ -47,8 +47,7 @@ h1 {
     font-size: 24px;
 }
 
-/* ======= PANTALLA DE VICTORIA ======= */
-
+/* Seccion de pantalla de victoria */
 #win-screen {
     position: fixed;
     top: 0;
