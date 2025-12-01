@@ -57,6 +57,13 @@ const misDatos = {
             descripcion: "Juego clasico de Space Invaders realizado con HTML, CSS Y JavaScript",
             tecnologias: ["HTML", "CSS", "JavaScript"],
             enlace: "PROYECTS/SpaceInvader/index.html"
+        },
+        {
+            img: "",
+            nombre: "Portafolio Personal",
+            descripcion: "Desarrollé un portafolio personal para mostrar mis proyectos y habilidades como desarrollador web.",
+            tecnologias: ["HTML", "CSS", "JavaScript"],
+            enlace: "https://github.com/Sylvan0r/DEW-y-DOR-Portafolio"
         }
     ]
 };
@@ -110,8 +117,8 @@ projectsList.innerHTML = misDatos.proyectos.map(proj => `
 
 // Hover
 document.querySelectorAll(".projectCard, .experienceCard").forEach(card => {
-    card.addEventListener("mouseenter", () => card.classList.add("scale-[1.02]", "transition-transform"));
-    card.addEventListener("mouseleave", () => card.classList.remove("scale-[1.02]"));
+    card.addEventListener("mouseenter", () => card.classList.add("scale-[1.02]", "transition-transform", "ms-2"));
+    card.addEventListener("mouseleave", () => card.classList.remove("scale-[1.02]","ms-10"));
 });
 
 // Click proyectos
