@@ -32,10 +32,10 @@ const misDatos = {
     proyectos: [
         {
             img: "",
-            nombre: "Portafolio Personal",
-            descripcion: "Desarrollé un portafolio personal para mostrar mis proyectos y habilidades como desarrollador web.",
+            nombre: "Creador de Estructuras",
+            descripcion: "Aplicación web para crear y gestionar estructuras de edificios, permitiendo añadir propietarios a puertas específicas y visualizar la distribución del edificio.",
             tecnologias: ["HTML", "CSS", "JavaScript"],
-            enlace: "https://github.com/Sylvan0r/DEW-y-DOR-Portafolio"
+            enlace: "PROYECTS/StructureManager/index.html"
         },
         {
             img: "https://i.pinimg.com/474x/e6/30/b1/e630b1373a0a0e06e1425ae533f424f4.jpg",
@@ -57,13 +57,6 @@ const misDatos = {
             descripcion: "Juego clasico de Space Invaders realizado con HTML, CSS Y JavaScript",
             tecnologias: ["HTML", "CSS", "JavaScript"],
             enlace: "PROYECTS/SpaceInvader/index.html"
-        },
-        {
-            img: "",
-            nombre: "Portafolio Personal",
-            descripcion: "Desarrollé un portafolio personal para mostrar mis proyectos y habilidades como desarrollador web.",
-            tecnologias: ["HTML", "CSS", "JavaScript"],
-            enlace: "https://github.com/Sylvan0r/DEW-y-DOR-Portafolio"
         }
     ]
 };

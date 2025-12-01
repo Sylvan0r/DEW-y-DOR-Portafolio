@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#formularioEdificio {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#formularioEdificio input {
+    margin: 0 5px 10px 0;
+    padding: 5px;
+}
+
+#formularioEdificio button {
+    padding: 5px 10px;
+}
+
+#edificiosContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Contenedor de cada edificio */
+.edificio {
+    width: 200px;
+    background-color: #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+}
+
+/* Título del edificio */
+.edificio h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Botones para editar o eliminar */
+.edificio .btnEliminar,
+.edificio .btnEditar {
+    position: absolute;
+    top: 5px;
+    font-size: 12px;
+    padding: 2px 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.edificio .btnEliminar {
+    right: 5px;
+    background-color: #e74c3c;
+    color: white;
+}
+
+.edificio .btnEditar {
+    left: 5px;
+    background-color: #3498db;
+    color: white;
+}
+
+/* Planta dentro del edificio */
+.planta {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+/* Puerta dentro de la planta */
+.puerta {
+    width: 40px;
+    height: 40px;
+    background-color: #aaa;
+    border: 2px solid #888;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    text-align: center;
+    word-break: break-word;
+}
