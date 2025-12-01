@@ -3,12 +3,11 @@ const misDatos = {
     personales: {
         nombre: "Adriano Martín Lorenzo",
         email: "adfor409@gmail.com",
-        telefono: "621038879",
-        bio: "¡Buenas! Soy Adriano Martín Lorenzo, un programador que le gusta afrontar nuevos retos y aprender cosas nuevas cada día. Me encanta la tecnología y todo lo relacionado con las tecnologías en general.",
+        telefono: "621 03 88 79",
+        bio: "¡Buenas! Soy Adriano Martín Lorenzo, un programador que le gusta afrontar nuevos retosy aprender nuevas cosas sobre la tecnología.",
         genero: "Masculino",
         nacionalidad: "Española",
         fechaNacimiento: "04/08/2005",
-        direccion: "Calle Retamar Santa Cruz de la Palma, España",
         foto: "IMG/placeholderUser.jpg",
         habilidades: [
             "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png",
@@ -53,7 +52,14 @@ const misDatos = {
             nombre: "Juego de Memoria",
             descripcion: "Juego de memoria simple desarrollado con HTML, CSS y JavaScript donde los jugadores deben encontrar pares de cartas iguales.",
             tecnologias: ["HTML", "CSS", "JavaScript"],
-            enlace: "PROYECTS/Act2/index.html"
+            enlace: "PROYECTS/MemoryGame/index.html"
+        },
+        {
+            img: "https://cdn-icons-png.flaticon.com/512/528/528105.png",
+            nombre: "Snake Game",
+            descripcion: "Juego clásico de Snake desarrollado con HTML, CSS y JavaScript donde los jugadores controlan una serpiente para comer comida y crecer sin chocar contra las paredes o a sí mismos.",
+            tecnologias: ["HTML", "CSS", "JavaScript"],
+            enlace: "PROYECTS/Snake/index.html"
         }   
     ]
 };

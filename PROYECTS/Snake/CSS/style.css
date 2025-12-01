@@ -1,0 +1,43 @@
+/* Estilo general */
+body {
+    background: radial-gradient(circle, #0d0d0d, #000);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 15px;
+    font-size: 38px;
+}
+
+#menu button {
+    padding: 12px 25px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+#menu button:hover {
+    transform: scale(1.06);
+}
+
+#gameCanvas {
+    background: #111;
+    display: block;
+    margin: 20px auto;
+    border: 5px solid #444;
+    box-shadow: 0 0 20px #222;
+}
+
+#info {
+    font-size: 22px;
+    margin-top: 10px;
+}
