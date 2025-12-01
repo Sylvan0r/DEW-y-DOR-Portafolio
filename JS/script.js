@@ -50,6 +50,13 @@ const misDatos = {
             descripcion: "Juego clásico de Snake desarrollado con HTML, CSS y JavaScript donde los jugadores controlan una serpiente para comer comida y crecer sin chocar contra las paredes o a sí mismos.",
             tecnologias: ["HTML", "CSS", "JavaScript"],
             enlace: "PROYECTS/Snake/index.html"
+        },
+        {
+            img: "https://img.freepik.com/vector-premium/pixel-art-nave-espacial-contra-alienigenas-conjunto-iconos-blanco-negro-1-bit-diseno-juegos-aplicaciones-moviles-aislado_148553-843.jpg?semt=ais_hybrid&w=740&q=80",
+            nombre: "Space Invaders",
+            descripcion: "Juego clasico de Space Invaders realizado con HTML, CSS Y JavaScript",
+            tecnologias: ["HTML", "CSS", "JavaScript"],
+            enlace: "PROYECTS/SpaceInvader/index.html"
         }
     ]
 };
