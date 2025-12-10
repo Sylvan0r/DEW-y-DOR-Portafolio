@@ -1,0 +1,113 @@
+body {
+    font-family: "Courier New", monospace;
+    background: #001100;
+    color: #0f0;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+#back-btn {
+    margin-bottom: 5px;
+    padding: 4px 8px;
+    background: #003300;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    color: #0f0;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#back-btn:hover {
+    background: #005500;
+}
+
+/* Tablero 4x3 */
+.board {
+    width: 360px; /* 4 columnas de 80px + gaps */
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(3, 90px);
+    gap: 10px;
+    margin: 5px auto;
+}
+
+/* Cartas */
+.card {
+    width: 80px;
+    height: 90px;
+    background: #002200;
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    background-size: cover;
+    background-position: center;
+}
+
+.card.flipped {
+    border: 2px solid lime;
+}
+
+.card.matched {
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Score */
+#score {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Pantalla de victoria */
+#win-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,255,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity .3s;
+}
+
+.win-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.win-box {
+    background: #002200;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    width: 220px;
+    box-shadow: 0 0 15px #0f0;
+}
+
+#restart-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #003300;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    color: #0f0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#restart-btn:hover {
+    background: #005500;
+}

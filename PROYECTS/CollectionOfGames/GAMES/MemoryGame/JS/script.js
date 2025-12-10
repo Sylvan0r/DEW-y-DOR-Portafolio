@@ -1,8 +1,15 @@
 let score = 0;
 let firstPick = null;
 let secondPick = null;
-const totalPairs = 6; // número de parejas
-let lockBoard = false; // <-- evita clicks mientras esperamos
+const totalPairs = 6; // 6 parejas
+let lockBoard = false;
+
+// Botón volver
+const backBtn = document.getElementById("back-btn");
+backBtn.addEventListener("click", () => {
+    window.location.href = "about:blank";
+    parent.showGameSelection(); // función en la página principal
+});
 
 window.addEventListener("load", () => {
     resetGame();
@@ -23,7 +30,6 @@ function resetGame() {
 }
 
 function initializeBoard() {
-
     const images = [
         "https://i.pinimg.com/originals/51/56/25/5156259e1f30dece1376dc5695a9a1d4.png",
         "https://static.vecteezy.com/system/resources/previews/001/198/363/non_2x/diamond-poker-card-png.png",
@@ -33,11 +39,11 @@ function initializeBoard() {
         "https://i.pinimg.com/736x/1b/f3/45/1bf345371069447ff760bfcfd7cf91ba.jpg"
     ];
 
-    let pool = [...images, ...images];
+    let pool = [...images, ...images]; // duplicar para parejas
     pool.sort(() => Math.random() - 0.5);
 
     const board = document.getElementById("game-board");
-    board.innerHTML = ""; 
+    board.innerHTML = "";
 
     pool.forEach(image => {
         const card = document.createElement("div");
@@ -49,16 +55,13 @@ function initializeBoard() {
 }
 
 function revealCard(event) {
+    const card = event.currentTarget;
 
-    const card = event.currentTarget; // usar currentTarget es más seguro
+    if (lockBoard) return;
+    if (card.classList.contains("matched")) return;
+    if (card === firstPick) return;
+    if (card.classList.contains("flipped")) return;
 
-    // IGNORAR si:
-    if (lockBoard) return; // el tablero está bloqueado temporalmente
-    if (card.classList.contains("matched")) return; // ya emparejada
-    if (card === firstPick) return; // no permitir hacer click en la misma carta dos veces
-    if (card.classList.contains("flipped")) return; // ya está revelada actualmente
-
-    // Revelar visualmente
     card.style.backgroundImage = `url(${card.dataset.image})`;
     card.classList.add("flipped");
 
@@ -67,16 +70,12 @@ function revealCard(event) {
         return;
     }
 
-    // Si llegamos aquí ya hay una primera carta
     secondPick = card;
 
-    // Comparar
     if (firstPick.dataset.image === secondPick.dataset.image) {
-        // Match
         firstPick.classList.add("matched");
         secondPick.classList.add("matched");
 
-        // limpiar picks
         firstPick = null;
         secondPick = null;
 
@@ -88,11 +87,8 @@ function revealCard(event) {
         }
 
     } else {
-        // No match -> bloquear y ocultar tras un delay
         lockBoard = true;
-
         setTimeout(() => {
-            // ocultar ambos
             if (firstPick) {
                 firstPick.style.backgroundImage = "";
                 firstPick.classList.remove("flipped");
@@ -102,15 +98,12 @@ function revealCard(event) {
                 secondPick.classList.remove("flipped");
             }
 
-            // reset estado
             firstPick = null;
             secondPick = null;
             lockBoard = false;
-        }, 700); // tiempo de espera (ms)
+        }, 700);
     }
 }
-
-//Pantalla de victoria
 
 function showWinScreen() {
     const win = document.getElementById("win-screen");

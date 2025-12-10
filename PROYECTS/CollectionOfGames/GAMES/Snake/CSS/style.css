@@ -1,0 +1,72 @@
+body {
+    font-family: "Courier New", monospace;
+    background: #001100;
+    color: #0f0;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+#back-btn {
+    margin-bottom: 5px;
+    padding: 4px 8px;
+    background: #003300;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    color: #0f0;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#back-btn:hover {
+    background: #005500;
+}
+
+/* Contenedor del juego */
+#game-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+#gameCanvas {
+    background: #111;
+    border: 3px solid #0f0;
+    width: 300px;
+    height: 300px;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#menu button {
+    padding: 4px 8px;
+    background: #003300;
+    border: 1px solid #0f0;
+    color: #0f0;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#menu button:hover {
+    background: #005500;
+}
+
+#info {
+    font-size: 12px;
+    margin-top: 5px;
+}

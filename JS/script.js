@@ -50,43 +50,17 @@ const misDatos = {
             enlace: "PROYECTS/StructureManager/index.html"
         },
         {
-            img: "https://i.pinimg.com/474x/e6/30/b1/e630b1373a0a0e06e1425ae533f424f4.jpg",
-            nombre: { es: "Juego de Memoria", en: "Memory Game", de: "Memory-Spiel", fr: "Jeu de Mémoire", jp: "メモリーゲーム" },
+            img: "https://i.pinimg.com/originals/7c/24/f7/7c24f7242948e794c362041b23d221aa.png",
+            nombre: { es: "Ordenador de juegos", en: "Gaming computer", de: "Gaming-Computer", fr: "Ordinateur de jeu", jp: "ゲーミングコンピューター" },
             descripcion: {
-                es: "Juego de memoria simple desarrollado con HTML, CSS y JavaScript donde los jugadores deben encontrar pares de cartas iguales.",
-                en: "Simple memory game developed with HTML, CSS, and JavaScript where players must find matching card pairs.",
-                de: "Ein einfaches Memory-Spiel entwickelt mit HTML, CSS und JavaScript, bei dem die Spieler passende Kartenpaare finden müssen.",
-                fr: "Jeu de mémoire simple développé avec HTML, CSS et JavaScript où les joueurs doivent trouver des paires de cartes identiques.",
-                jp: "HTML、CSS、JavaScriptで開発されたシンプルなメモリーゲームで、プレイヤーは同じカードのペアを見つける必要があります。"
+                es: "¡Un ordenador sencillo con algunos juegos clasicos como el Snake o el Space Invaders!",
+                en: "A simple computer with some classic games like Snake or Space Invaders!",
+                de: "Ein einfacher Computer mit einigen klassischen Spielen wie Snake oder Space Invaders!",
+                fr: "Un ordinateur simple avec quelques jeux classiques comme Snake ou Space Invaders !",
+                jp: "スネークやスペースインベーダーなどの古典的なゲームを備えたシンプルなコンピューター。"
             },
             tecnologias: ["HTML", "CSS", "JavaScript"],
-            enlace: "PROYECTS/MemoryGame/index.html"
-        },
-        {
-            img: "https://cdn-icons-png.flaticon.com/512/528/528105.png",
-            nombre: { es: "Snake Game+", en: "Snake Game+", de: "Snake-Spiel+", fr: "Jeu Snake+", jp: "スネークゲーム+" },
-            descripcion: {
-                es: "Juego clásico de Snake desarrollado con HTML, CSS y JavaScript donde los jugadores controlan una serpiente para comer comida y crecer sin chocar contra las paredes o a sí mismos.",
-                en: "Classic Snake game developed with HTML, CSS, and JavaScript where players control a snake to eat food and grow without crashing into walls or itself.",
-                de: "Klassisches Snake-Spiel entwickelt mit HTML, CSS und JavaScript, bei dem die Spieler eine Schlange steuern, um Nahrung zu essen und zu wachsen, ohne gegen Wände oder sich selbst zu stoßen.",
-                fr: "Jeu Snake classique développé avec HTML, CSS et JavaScript où les joueurs contrôlent un serpent pour manger et grandir sans heurter les murs ou eux-mêmes.",
-                jp: "HTML、CSS、JavaScriptで開発されたクラシックなスネークゲームで、プレイヤーは壁や自分自身にぶつからずに食べ物を食べて成長させます。"
-            },
-            tecnologias: ["HTML", "CSS", "JavaScript"],
-            enlace: "PROYECTS/Snake/index.html"
-        },
-        {
-            img: "https://img.freepik.com/vector-premium/pixel-art-nave-espacial-contra-alienigenas-conjunto-iconos-blanco-negro-1-bit-diseno-juegos-aplicaciones-moviles-aislado_148553-843.jpg?semt=ais_hybrid&w=740&q=80",
-            nombre: { es: "Space Invaders", en: "Space Invaders", de: "Space Invaders", fr: "Space Invaders", jp: "スペースインベーダー" },
-            descripcion: {
-                es: "Juego clásico de Space Invaders realizado con HTML, CSS y JavaScript.",
-                en: "Classic Space Invaders game built with HTML, CSS, and JavaScript.",
-                de: "Klassisches Space-Invaders-Spiel entwickelt mit HTML, CSS und JavaScript.",
-                fr: "Jeu classique Space Invaders développé avec HTML, CSS et JavaScript.",
-                jp: "HTML、CSS、JavaScriptで作られたクラシックなスペースインベーダーゲームです。"
-            },
-            tecnologias: ["HTML", "CSS", "JavaScript"],
-            enlace: "PROYECTS/SpaceInvader/index.html"
+            enlace: "PROYECTS/CollectionOfGames/index.html"
         }
     ]
 };

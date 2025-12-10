@@ -15,6 +15,13 @@ let moving = false;
 const recordSpan = document.getElementById("record");
 recordSpan.textContent = record;
 
+// Botón volver
+const backBtn = document.getElementById("back-btn");
+backBtn.addEventListener("click", () => {
+    window.location.href = "about:blank";
+    if(parent.showGameSelection) parent.showGameSelection();
+});
+
 // Botones UI
 const startBtn = document.getElementById("startBtn");
 const speedBtn = document.getElementById("speedBtn");
@@ -81,7 +88,7 @@ function update() {
     ctx.fillStyle = "#4ade80";
     snake.forEach((s) => ctx.fillRect(s.x, s.y, box, box));
 
-    if (!direction) return; // No moverse hasta que el usuario presione una tecla
+    if (!direction) return; // no moverse hasta input
 
     let head = { ...snake[0] };
     if (direction === "UP") head.y -= box;
@@ -89,12 +96,11 @@ function update() {
     if (direction === "LEFT") head.x -= box;
     if (direction === "RIGHT") head.x += box;
 
-    // Colisión con paredes
+    // Colisiones
     if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
         return gameOver();
     }
 
-    // Colisión consigo misma
     for (let s of snake) {
         if (head.x === s.x && head.y === s.y) return gameOver();
     }

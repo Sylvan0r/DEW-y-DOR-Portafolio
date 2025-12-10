@@ -1,0 +1,60 @@
+body {
+    background: #111;
+    margin: 0;
+    font-family: "Courier New", monospace;
+    color: #0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Monitor 3D */
+#monitor-wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#monitor-3d {
+    margin-top: -18%;
+    left: -40%;
+    width: 180vw;
+    height: 180vh;
+}
+
+/* Pantalla superpuesta */
+#screen-overlay {
+    position: absolute;
+    top: 14%;
+    left: 39.5%;
+    width: 450px;
+    height: 400px;
+    background: #001100;
+    border: 3px solid #0f0;
+    box-shadow: inset 0 0 20px #0f0;
+    pointer-events: auto;
+    overflow: hidden;
+    filter: contrast(0.85) saturate(0.7);
+    perspective: 800px;
+    transform: rotateX(3deg) scale(1.01);
+}
+
+#visor {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 255, 0, 0.1) 0px,
+            rgba(0, 255, 0, 0.1) 2px,
+            transparent 3px
+        );
+}

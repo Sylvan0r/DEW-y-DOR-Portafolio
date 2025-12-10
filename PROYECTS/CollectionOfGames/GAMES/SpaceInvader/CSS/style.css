@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    background: #001100;
+    color: #0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 16px;
+    margin: 2px 0 5px 0;
+}
+
+#game-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    padding-left: 5px;
+    box-sizing: border-box;
+}
+
+/* Juego a la izquierda */
+#gameContainer {
+    width: 280px;
+    height: 320px;
+    background: #001100;
+    border: 2px solid #0f0;
+    position: relative;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+/* Panel de info a la derecha */
+#game-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5px;
+    width: 150px;
+    box-sizing: border-box;
+}
+
+#score, #level {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #0f0;
+    font-family: "Courier New", monospace;
+}
+
+/* Botones */
+#start-btn, #restart-btn, #back-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid #0f0;
+    background: #002800;
+    color: #0f0;
+    border-radius: 5px;
+    font-family: "Courier New", monospace;
+    transition: 0.2s;
+}
+
+#start-btn:hover, #restart-btn:hover, #back-btn:hover {
+    background: #003300;
+    transform: scale(1.05);
+}
+
+/* Jugador y enemigos */
+#player {
+    position: absolute;
+    width: 22px;
+    height: 16px;
+    background: #0f0;
+    bottom: 10px;
+}
+
+.enemy {
+    position: absolute;
+    width: 22px;
+    height: 16px;
+    background: red; /* se mantiene rojo para distinguir enemigos */
+}
+
+.bullet {
+    position: absolute;
+    width: 4px;
+    height: 8px;
+    background: #0f0;
+}
+
+/* Mensaje de victoria/derrota */
+.msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #0f0;
+    font-size: 14px;
+    text-align: center;
+    font-family: "Courier New", monospace;
+}
