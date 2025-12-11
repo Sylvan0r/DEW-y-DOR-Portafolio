@@ -1,4 +1,63 @@
-iframe{
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Contenedor del juego */
+.game-container {
+    text-align: center;
+}
+
+/* Marco del juego */
+iframe {
     width: 1152px;
     height: 648px;
+    border: 3px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* Controles debajo del juego */
+.controls {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+/* Botoncitos estilo tecla */
+.key {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.label {
+    opacity: 0.8;
+    font-size: 14px;
 }
