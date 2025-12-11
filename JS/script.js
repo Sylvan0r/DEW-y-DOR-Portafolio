@@ -50,6 +50,19 @@ const misDatos = {
             enlace: "PROYECTS/StructureManager/index.html"
         },
         {
+            img: "https://dl.flathub.org/media/org/godotengine/Godot.desktop/ac7fa03a5260254f610d9d8054722758/icons/128x128@2/org.godotengine.Godot.desktop.png",
+            nombre: { es: "Aventura sencilla en Godot", en: "Simple adventure in Godot", de: "Einfaches Abenteuer in Godot", fr: "Une aventure simple dans Godot", jp: "ゴドーのシンプルな冒険" },
+            descripcion: {
+                es: "¡Un plataformer sencillo realizado dentro de Godot Engine!",
+                en: "A simple platformer made inside the Godot Engine!",
+                de: "Ein simples Jump'n'Run-Spiel, entwickelt mit der Godot-Engine!",
+                fr: "Un jeu de plateforme simple réalisé avec le moteur Godot !",
+                jp: "Godot エンジンで作られたシンプルなプラットフォーム ゲームです。"
+            },
+            tecnologias: ["HTML", "CSS", "JavaScript"],
+            enlace: "PROYECTS/GodotGame/index.html"
+        },
+        {
             img: "https://i.pinimg.com/originals/7c/24/f7/7c24f7242948e794c362041b23d221aa.png",
             nombre: { es: "Ordenador de juegos", en: "Gaming computer", de: "Gaming-Computer", fr: "Ordinateur de jeu", jp: "ゲーミングコンピューター" },
             descripcion: {
