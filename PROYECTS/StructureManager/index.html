@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <title>Gestión de Edificios</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <h1>Gestión de Edificios</h1>
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Edificios</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
 
-        <!-- Formulario para añadir edificio -->
-        <div id="formularioEdificio">
-            <input type="text" id="calleInput" placeholder="Calle">
-            <input type="text" id="numeroInput" placeholder="Número">
-            <input type="text" id="cpInput" placeholder="Código Postal">
-            <button id="añadirEdificioBtn">Añadir Edificio</button>
-        </div>
+<h1>Gestión de Edificios</h1>
 
-        <div id="edificiosContainer"></div>
+<!-- Crear edificio -->
+<div id="formularioEdificio">
+    <input type="text" id="calleInput" placeholder="Calle">
+    <input type="number" id="numeroInput" placeholder="Número">
+    <input type="text" id="cpInput" placeholder="Código Postal">
+    <button id="añadirEdificioBtn">Añadir Edificio</button>
+</div>
 
-        <script src="script.js"></script>
-    </body>
+<!-- Añadir plantas -->
+<div id="formularioPlantas">
+    <select id="edificioPlantasSelect"></select>
+    <input type="number" id="numPlantasInput" placeholder="Plantas">
+    <input type="number" id="puertasInput" placeholder="Puertas por planta">
+    <button id="añadirPlantasBtn">Añadir Plantas</button>
+</div>
+
+<!-- Añadir propietario -->
+<div id="formularioPropietario">
+    <select id="edificioPropietarioSelect"></select>
+    <input type="text" id="nombrePropietarioInput" placeholder="Nombre propietario">
+    <input type="number" id="plantaPropietarioInput" placeholder="Planta">
+    <input type="number" id="puertaPropietarioInput" placeholder="Puerta">
+    <button id="añadirPropietarioBtn">Asignar Propietario</button>
+</div>
+
+<div id="edificiosContainer"></div>
+
+<script src="JS/script.js"></script>
+</body>
 </html>

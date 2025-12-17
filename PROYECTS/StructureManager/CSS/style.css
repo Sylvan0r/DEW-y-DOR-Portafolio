@@ -6,31 +6,27 @@ body {
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
 }
 
-#formularioEdificio {
+#formularioEdificio,
+#formularioPlantas,
+#formularioPropietario {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-#formularioEdificio input {
-    margin: 0 5px 10px 0;
+input, select, button {
     padding: 5px;
-}
-
-#formularioEdificio button {
-    padding: 5px 10px;
+    margin: 3px;
 }
 
 #edificiosContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 25px;
     justify-content: center;
 }
 
-/* Contenedor de cada edificio */
 .edificio {
     width: 200px;
     background-color: #ddd;
@@ -42,44 +38,37 @@ h1 {
     position: relative;
 }
 
-/* Título del edificio */
 .edificio h2 {
     text-align: center;
-    margin-bottom: 10px;
 }
 
-/* Botones para editar o eliminar */
-.edificio .btnEliminar,
-.edificio .btnEditar {
+.btnEditar, .btnEliminar {
     position: absolute;
     top: 5px;
     font-size: 12px;
-    padding: 2px 5px;
+    padding: 3px;
     border: none;
     cursor: pointer;
-    border-radius: 3px;
 }
 
-.edificio .btnEliminar {
-    right: 5px;
-    background-color: #e74c3c;
-    color: white;
-}
-
-.edificio .btnEditar {
+.btnEditar {
     left: 5px;
     background-color: #3498db;
     color: white;
 }
 
-/* Planta dentro del edificio */
+.btnEliminar {
+    right: 5px;
+    background-color: #e74c3c;
+    color: white;
+}
+
 .planta {
     display: flex;
     justify-content: space-around;
     margin-bottom: 5px;
 }
 
-/* Puerta dentro de la planta */
 .puerta {
     width: 40px;
     height: 40px;
@@ -91,5 +80,4 @@ h1 {
     justify-content: center;
     font-size: 10px;
     text-align: center;
-    word-break: break-word;
 }
