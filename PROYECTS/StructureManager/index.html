@@ -1,41 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Gestión de Edificios</title>
-    <link rel="stylesheet" href="CSS/style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Gestión de Edificios</title>
+        <link rel="stylesheet" href="CSS/style.css">
+    </head>
+    <body>
 
-<h1>Gestión de Edificios</h1>
+        <div class="layout">
+            <!-- Sección izquierda -->
+            <div class="panel-izquierdo">
+                <h1>Gestor de Edificios</h1>
+                <!-- formulario edificio -->
+                <div id="formularioEdificio" class="form-card">
+                    <h2>Crear edificio</h2>
+                    <p>Nombre de la calle</p>
+                    <input type="text" id="calleInput" placeholder="Ej: Gran Vía">
+                    <p>Número del edificio</p>
+                    <input type="number" id="numeroInput" placeholder="Ej: 25">
+                    <p>Código postal</p>
+                    <input type="text" id="cpInput" placeholder="Ej: 28013">
+                    <button id="añadirEdificioBtn">Añadir edificio</button>
+                </div>
 
-<!-- Crear edificio -->
-<div id="formularioEdificio">
-    <input type="text" id="calleInput" placeholder="Calle">
-    <input type="number" id="numeroInput" placeholder="Número">
-    <input type="text" id="cpInput" placeholder="Código Postal">
-    <button id="añadirEdificioBtn">Añadir Edificio</button>
-</div>
+                <!-- formulario plantas -->
+                <div id="formularioPlantas" class="form-card">
+                    <h2>Editor de edificio</h2>
+                    <p>Edificio</p>
+                    <select id="edificioPlantasSelect"></select>
+                    <p>Número de plantas</p>
+                    <input type="number" id="numPlantasInput" placeholder="Ej: 5">
+                    <p>Puertas por planta</p>
+                    <input type="number" id="puertasInput" placeholder="Ej: 4">
+                    <button id="añadirPlantasBtn">Añadir plantas</button>
+                </div>
 
-<!-- Añadir plantas -->
-<div id="formularioPlantas">
-    <select id="edificioPlantasSelect"></select>
-    <input type="number" id="numPlantasInput" placeholder="Plantas">
-    <input type="number" id="puertasInput" placeholder="Puertas por planta">
-    <button id="añadirPlantasBtn">Añadir Plantas</button>
-</div>
+                <!-- formulario propietario -->
+                <div id="formularioPropietario" class="form-card">
+                    <h2>Asignar propietario</h2>
+                    <p>Edificio</p>
+                    <select id="edificioPropietarioSelect"></select>
+                    <p>Nombre del propietario</p>
+                    <input type="text" id="nombrePropietarioInput" placeholder="Nombre completo">
+                    <div class="fila-doble">
+                        <div>
+                            <p>Planta</p>
+                            <input type="number" id="plantaPropietarioInput" placeholder="Ej: 2">
+                        </div>
+                        <div>
+                            <p>Puerta</p>
+                            <input type="number" id="puertaPropietarioInput" placeholder="Ej: 3">
+                        </div>
+                    </div>
+                    <button id="añadirPropietarioBtn">Asignar propietario</button>
+                </div>
 
-<!-- Añadir propietario -->
-<div id="formularioPropietario">
-    <select id="edificioPropietarioSelect"></select>
-    <input type="text" id="nombrePropietarioInput" placeholder="Nombre propietario">
-    <input type="number" id="plantaPropietarioInput" placeholder="Planta">
-    <input type="number" id="puertaPropietarioInput" placeholder="Puerta">
-    <button id="añadirPropietarioBtn">Asignar Propietario</button>
-</div>
+            </div>
 
-<div id="edificiosContainer"></div>
+            <!-- lateral derecho -->
+            <div class="panel-derecho">
+                <h1>Edificios creados</h1>
+                <div id="edificiosContainer"></div>
+            </div>
 
-<script src="JS/script.js"></script>
-</body>
+        </div>
+        <script src="JS/script.js"></script>
+    </body>
 </html>

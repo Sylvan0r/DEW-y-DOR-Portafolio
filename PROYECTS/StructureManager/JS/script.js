@@ -4,10 +4,6 @@ class Edificio {
         this.numero = numero;
         this.codigo_postal = codigo_postal;
         this.plantas_del_edificio = [];
-
-        console.log(
-            `Construido nuevo edificio en calle: ${this.calle}, nº: ${this.numero}, CP: ${this.codigo_postal}.`
-        );
     }
 
     agregarPlantasYPuertas(numPlantas, puertasPorPlanta) {
@@ -28,181 +24,121 @@ class Edificio {
         }
     }
 
-    modificarNumero(numero) {
-        this.numero = numero;
-    }
+    modificarNumero(n) { this.numero = n; }
+    modificarCalle(c) { this.calle = c; }
+    modificarCodigoPostal(cp) { this.codigo_postal = cp; }
 
-    modificarCalle(calle) {
-        this.calle = calle;
-    }
-
-    modificarCodigoPostal(codigo) {
-        this.codigo_postal = codigo;
-    }
-
-    imprimeCalle() {
-        return this.calle;
-    }
-
-    imprimeNumero() {
-        return this.numero;
-    }
-
-    imprimeCodigoPostal() {
-        return this.codigo_postal;
-    }
+    imprimeCalle() { return this.calle; }
+    imprimeNumero() { return this.numero; }
+    imprimeCodigoPostal() { return this.codigo_postal; }
 
     agregarPropietario(nombre, planta, puerta) {
         const piso = this.plantas_del_edificio.find(
             p => p.planta === planta && p.puerta === puerta
         );
-
-        if (piso) {
-            piso.propietario = nombre;
-            console.log(
-                `${nombre} es ahora el propietario de la puerta ${puerta} de la planta ${planta}.`
-            );
-        } else {
-            alert("Esa planta o puerta no existe");
-        }
-    }
-
-    imprimePlantas() {
-        const plantas = {};
-        this.plantas_del_edificio.forEach(p => {
-            if (!plantas[p.planta]) plantas[p.planta] = [];
-            plantas[p.planta].push(p);
-        });
-
-        for (const numPlanta in plantas) {
-            console.log(`Planta ${numPlanta}:`);
-            plantas[numPlanta].forEach(p => {
-                console.log(
-                    `  Puerta ${p.puerta}: ${p.propietario ?? "Sin propietario"}`
-                );
-            });
-        }
+        if (piso) piso.propietario = nombre;
+        else alert("Esa planta o puerta no existe");
     }
 }
 
 const edificios = [];
 
-/* ---------- RENDER ---------- */
+/* Mostrar / ocultar formularios */
+function controlarFormularios() {
+    const mostrar = edificios.length > 0;
+    formularioPlantas.style.display = mostrar ? "flex" : "none";
+    formularioPropietario.style.display = mostrar ? "flex" : "none";
+}
+
+/* Render */
 function renderEdificios() {
-    const contenedor = document.getElementById("edificiosContainer");
-    contenedor.innerHTML = "";
+    edificiosContainer.innerHTML = "";
 
     edificios.forEach((edificio, index) => {
         const div = document.createElement("div");
         div.className = "edificio";
 
-        const titulo = document.createElement("h2");
-        titulo.textContent = `${edificio.imprimeCalle()} ${edificio.imprimeNumero()}`;
-        div.appendChild(titulo);
+        div.innerHTML = `
+            <h2>${edificio.imprimeCalle()} ${edificio.imprimeNumero()}</h2>
+            <button class="btnEditar">Editar</button>
+            <button class="btnEliminar">Eliminar</button>
+        `;
 
-        // Editar
-        const btnEditar = document.createElement("button");
-        btnEditar.textContent = "Editar";
-        btnEditar.className = "btnEditar";
-        btnEditar.onclick = () => {
-            const c = prompt("Nueva calle", edificio.imprimeCalle());
-            const n = prompt("Nuevo número", edificio.imprimeNumero());
-            const cp = prompt("Nuevo CP", edificio.imprimeCodigoPostal());
-            if (c) edificio.modificarCalle(c);
-            if (n) edificio.modificarNumero(n);
-            if (cp) edificio.modificarCodigoPostal(cp);
+        div.querySelector(".btnEditar").onclick = () => {
+            edificio.modificarCalle(prompt("Calle", edificio.imprimeCalle()));
+            edificio.modificarNumero(prompt("Número", edificio.imprimeNumero()));
+            edificio.modificarCodigoPostal(prompt("CP", edificio.imprimeCodigoPostal()));
             renderEdificios();
+            actualizarSelects();
         };
-        div.appendChild(btnEditar);
 
-        // Eliminar
-        const btnEliminar = document.createElement("button");
-        btnEliminar.textContent = "Eliminar";
-        btnEliminar.className = "btnEliminar";
-        btnEliminar.onclick = () => {
+        div.querySelector(".btnEliminar").onclick = () => {
             edificios.splice(index, 1);
             actualizarSelects();
             renderEdificios();
+            controlarFormularios();
         };
-        div.appendChild(btnEliminar);
 
-        // Plantas
         const plantas = {};
         edificio.plantas_del_edificio.forEach(p => {
             if (!plantas[p.planta]) plantas[p.planta] = [];
             plantas[p.planta].push(p);
         });
 
-        Object.keys(plantas).sort((a,b)=>b-a).forEach(plantaNum => {
+        Object.keys(plantas).sort((a, b) => b - a).forEach(planta => {
             const divPlanta = document.createElement("div");
             divPlanta.className = "planta";
 
-            plantas[plantaNum].forEach(puerta => {
+            plantas[planta].forEach(p => {
                 const divPuerta = document.createElement("div");
                 divPuerta.className = "puerta";
-                divPuerta.textContent = puerta.propietario
-                    ? puerta.propietario.split(" ")[0]
-                    : "";
+                divPuerta.textContent = p.propietario ? p.propietario.split(" ")[0] : "";
                 divPlanta.appendChild(divPuerta);
             });
 
             div.appendChild(divPlanta);
         });
 
-        contenedor.appendChild(div);
+        edificiosContainer.appendChild(div);
     });
 }
 
-/* ---------- FORMULARIOS ---------- */
-
-// Crear edificio
-document.getElementById("añadirEdificioBtn").onclick = () => {
-    const calle = calleInput.value;
-    const numero = numeroInput.value;
-    const cp = cpInput.value;
-
-    if (calle && numero && cp) {
-        edificios.push(new Edificio(calle, numero, cp));
+/* Formularios */
+añadirEdificioBtn.onclick = () => {
+    if (calleInput.value && numeroInput.value && cpInput.value) {
+        edificios.push(new Edificio(calleInput.value, numeroInput.value, cpInput.value));
         actualizarSelects();
         renderEdificios();
+        controlarFormularios();
     }
 };
 
-// Añadir plantas
-document.getElementById("añadirPlantasBtn").onclick = () => {
-    const idx = edificioPlantasSelect.value;
-    const plantas = +numPlantasInput.value;
-    const puertas = +puertasInput.value;
-
-    if (idx !== "" && plantas > 0 && puertas > 0) {
-        edificios[idx].agregarPlantasYPuertas(plantas, puertas);
-        renderEdificios();
-    }
+añadirPlantasBtn.onclick = () => {
+    edificios[edificioPlantasSelect.value]
+        .agregarPlantasYPuertas(+numPlantasInput.value, +puertasInput.value);
+    renderEdificios();
 };
 
-// Añadir propietario
-document.getElementById("añadirPropietarioBtn").onclick = () => {
-    const idx = edificioPropietarioSelect.value;
-    const nombre = nombrePropietarioInput.value;
-    const planta = +plantaPropietarioInput.value;
-    const puerta = +puertaPropietarioInput.value;
-
-    if (idx !== "" && nombre && planta && puerta) {
-        edificios[idx].agregarPropietario(nombre, planta, puerta);
-        renderEdificios();
-    }
+añadirPropietarioBtn.onclick = () => {
+    edificios[edificioPropietarioSelect.value]
+        .agregarPropietario(
+            nombrePropietarioInput.value,
+            +plantaPropietarioInput.value,
+            +puertaPropietarioInput.value
+        );
+    renderEdificios();
 };
 
-// Actualizar selects
 function actualizarSelects() {
     edificioPlantasSelect.innerHTML = "";
     edificioPropietarioSelect.innerHTML = "";
 
     edificios.forEach((e, i) => {
-        const option = `${e.imprimeCalle()} ${e.imprimeNumero()}`;
-        edificioPlantasSelect.innerHTML += `<option value="${i}">${option}</option>`;
-        edificioPropietarioSelect.innerHTML += `<option value="${i}">${option}</option>`;
+        const txt = `${e.imprimeCalle()} ${e.imprimeNumero()}`;
+        edificioPlantasSelect.innerHTML += `<option value="${i}">${txt}</option>`;
+        edificioPropietarioSelect.innerHTML += `<option value="${i}">${txt}</option>`;
     });
 }
 
 renderEdificios();
+controlarFormularios();

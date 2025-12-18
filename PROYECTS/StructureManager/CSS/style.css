@@ -1,24 +1,123 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    padding: 20px;
+    margin: 0;
+    padding: 10px;
+    height: 100vh;
+    overflow: hidden; 
 }
 
-h1 {
+/* Layout general */
+
+.layout {
+    display: flex;
+    gap: 15px;
+    height: calc(100vh - 20px);
+}
+
+/* Sección del panel izquierdo */
+
+.panel-izquierdo {
+    width: 21%;
+    min-width: 300px; 
+    max-height: 100%;
+    overflow-y: auto; /* scroll solo aquí */
+    padding-right: 5px;
+}
+
+.panel-izquierdo h1 {
     text-align: center;
+    font-size: 20px;
+    margin: 10px 0;
 }
 
-#formularioEdificio,
+/* Sección del panel derecho */
+
+.panel-derecho {
+    width: 79%;
+    background-color: #eaeaea;
+    padding: 10px;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.panel-derecho h1 {
+    text-align: center;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+/* Formularios compactos */
+
+.form-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+.form-card h2 {
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 0 6px;
+}
+
+.form-card p {
+    font-size: 12px;
+    margin: 2px 0;
+    color: #555;
+}
+
+.form-card input,
+.form-card select {
+    padding: 6px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+}
+
+/* Botones compactos */
+.form-card button {
+    margin-top: 6px;
+    padding: 8px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    background-color: #2ecc71;
+}
+
+#formularioPropietario button {
+    background-color: #3498db;
+}
+
+/* Doble columna planta y puerta */
+
+.fila-doble {
+    display: flex;
+    gap: 8px;
+}
+
+.fila-doble div {
+    flex: 1;
+}
+
+/* Ocultos */
+
 #formularioPlantas,
 #formularioPropietario {
-    text-align: center;
-    margin-bottom: 15px;
+    display: none;
 }
 
-input, select, button {
-    padding: 5px;
-    margin: 3px;
-}
+/* Sección de los edificios */
 
 #edificiosContainer {
     display: flex;
@@ -80,4 +179,24 @@ input, select, button {
     justify-content: center;
     font-size: 10px;
     text-align: center;
+}
+
+/* Sección del responsive */
+
+@media (max-width: 900px) {
+    body {
+        overflow: auto;
+    }
+
+    .layout {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .panel-izquierdo,
+    .panel-derecho {
+        width: 100%;
+        max-height: none;
+        overflow: visible;
+    }
 }
