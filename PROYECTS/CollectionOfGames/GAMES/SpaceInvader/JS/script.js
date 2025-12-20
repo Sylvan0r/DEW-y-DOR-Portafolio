@@ -5,7 +5,7 @@ const backBtn = document.getElementById("back-btn");
 const startBtn = document.getElementById("start-btn");
 const restartBtn = document.getElementById("restart-btn");
 
-let playerPos = 129; // centrado para ancho 280px
+let playerPos = 129;
 let bullets = [];
 let enemies = [];
 let score = 0;
@@ -14,14 +14,21 @@ let enemyDirection = 1;
 let gameOver = false;
 let gameStarted = false;
 
-// Botón volver al iframe principal
+let lastTime = 0;
+
+// Velocidad enemigos (controlada)
+const BASE_ENEMY_SPEED = 35;   // px/seg
+const SPEED_PER_LEVEL = 8;
+const MAX_ENEMY_SPEED = 80;
+
+// Volver
 backBtn.addEventListener("click", () => {
-    if(window.parent && window.parent.showGameSelection){
+    if (window.parent && window.parent.showGameSelection) {
         window.parent.showGameSelection();
     }
 });
 
-// Crear jugador
+// Jugador
 const player = document.createElement('div');
 player.id = 'player';
 player.style.left = playerPos + 'px';
@@ -29,9 +36,9 @@ gameContainer.appendChild(player);
 
 // Crear enemigos
 function createEnemies() {
-    // Limpiar enemigos existentes
-    enemies.forEach(e => { if(gameContainer.contains(e)) gameContainer.removeChild(e); });
+    enemies.forEach(e => gameContainer.contains(e) && gameContainer.removeChild(e));
     enemies = [];
+
     const rows = 3;
     const cols = 5;
     const spacingX = 45;
@@ -49,15 +56,13 @@ function createEnemies() {
     }
 }
 
-// Reiniciar juego
+// Reset
 function resetGame() {
-    // Limpiar balas
-    bullets.forEach(b => { if(gameContainer.contains(b)) gameContainer.removeChild(b); });
+    bullets.forEach(b => gameContainer.contains(b) && gameContainer.removeChild(b));
     bullets = [];
 
-    // Limpiar mensaje
-    const msg = document.querySelector('#gameContainer div.msg');
-    if(msg) gameContainer.removeChild(msg);
+    const msg = document.querySelector('#gameContainer .msg');
+    if (msg) gameContainer.removeChild(msg);
 
     playerPos = 129;
     player.style.left = playerPos + 'px';
@@ -65,45 +70,43 @@ function resetGame() {
     level = 1;
     enemyDirection = 1;
     gameOver = false;
+    lastTime = 0;
+
     scoreElement.textContent = score;
     levelElement.textContent = level;
     createEnemies();
 }
 
-// Botón iniciar
+// Start
 startBtn.addEventListener("click", () => {
-    if(!gameStarted){
+    if (!gameStarted) {
         gameStarted = true;
         resetGame();
-        gameLoop();
+        requestAnimationFrame(gameLoop);
     }
 });
 
-// Botón reiniciar
 restartBtn.addEventListener("click", () => {
     resetGame();
-    if(!gameStarted){
+    if (!gameStarted) {
         gameStarted = true;
-        gameLoop();
+        requestAnimationFrame(gameLoop);
     }
 });
 
-// Movimiento jugador y disparo
+// Controles
 document.addEventListener('keydown', e => {
-    if(!gameStarted || gameOver) return;
-    if(e.key === 'ArrowLeft') {
-        playerPos -= 10;
-        if(playerPos < 0) playerPos = 0;
-    }
-    if(e.key === 'ArrowRight') {
-        playerPos += 10;
-        if(playerPos > 258) playerPos = 258; // ancho juego - jugador
-    }
+    if (!gameStarted || gameOver) return;
+
+    if (e.key === 'ArrowLeft') playerPos = Math.max(0, playerPos - 10);
+    if (e.key === 'ArrowRight') playerPos = Math.min(258, playerPos + 10);
+
     player.style.left = playerPos + 'px';
-    if(e.key === ' ') shootBullet();
+
+    if (e.key === ' ') shootBullet();
 });
 
-// Disparar bala
+// Bala
 function shootBullet() {
     const bullet = document.createElement('div');
     bullet.classList.add('bullet');
@@ -113,57 +116,95 @@ function shootBullet() {
     bullets.push(bullet);
 }
 
-// Loop principal
-function gameLoop() {
-    if(!gameStarted || gameOver) return;
+// Loop
+function gameLoop(timestamp) {
+    if (!gameStarted || gameOver) return;
 
-    // Mover enemigos
-    let shiftDown = false;
+    if (!lastTime) lastTime = timestamp;
+    const deltaTime = (timestamp - lastTime) / 1000;
+    lastTime = timestamp;
+
+    let enemySpeed = BASE_ENEMY_SPEED + level * SPEED_PER_LEVEL;
+    enemySpeed = Math.min(enemySpeed, MAX_ENEMY_SPEED);
+
+    // Detectar bordes del grupo
+    let minX = Infinity;
+    let maxX = -Infinity;
+
     enemies.forEach(enemy => {
-        let left = parseInt(enemy.style.left);
-        left += enemyDirection * (1 + level * 0.3);
-        enemy.style.left = left + 'px';
-        if(left >= 258 || left <= 0) shiftDown = true;
+        const x = parseFloat(enemy.style.left);
+        minX = Math.min(minX, x);
+        maxX = Math.max(maxX, x + 22);
     });
 
-    if(shiftDown) {
+    const hitLeft = minX <= 0;
+    const hitRight = maxX >= 280;
+
+    if (hitLeft || hitRight) {
         enemyDirection *= -1;
+
+        // Corrección exacta para evitar desbordes
+        const correction = hitLeft ? -minX : 280 - maxX;
+
         enemies.forEach(enemy => {
-            let top = parseInt(enemy.style.top) + 20;
+            let left = parseFloat(enemy.style.left) + correction;
+            enemy.style.left = left + 'px';
+
+            let top = parseFloat(enemy.style.top) + 20;
             enemy.style.top = top + 'px';
-            if(top + 16 >= 304) endGame(false);
+
+            if (top + 16 >= 304) endGame(false);
         });
     }
 
-    // Mover balas y detectar colisiones
+    // Movimiento horizontal
+    enemies.forEach(enemy => {
+        let left = parseFloat(enemy.style.left);
+        left += enemyDirection * enemySpeed * deltaTime;
+        enemy.style.left = left + 'px';
+    });
+
+    // Balas
     bullets.forEach((bullet, i) => {
-        let top = parseInt(bullet.style.top);
-        top -= 5;
+        let top = parseFloat(bullet.style.top);
+        top -= 300 * deltaTime;
         bullet.style.top = top + 'px';
 
         enemies.forEach((enemy, j) => {
-            let ex = parseInt(enemy.style.left);
-            let ey = parseInt(enemy.style.top);
-            if(top <= ey + 16 && top >= ey &&
-               parseInt(bullet.style.left) >= ex &&
-               parseInt(bullet.style.left) <= ex + 22) {
+            const ex = parseFloat(enemy.style.left);
+            const ey = parseFloat(enemy.style.top);
+            const bx = parseFloat(bullet.style.left);
+
+            if (
+                top <= ey + 16 &&
+                top >= ey &&
+                bx >= ex &&
+                bx <= ex + 22
+            ) {
                 gameContainer.removeChild(enemy);
-                enemies.splice(j,1);
+                enemies.splice(j, 1);
                 gameContainer.removeChild(bullet);
-                bullets.splice(i,1);
+                bullets.splice(i, 1);
                 score += 10;
                 scoreElement.textContent = score;
             }
         });
 
-        if(top < 0) {
-            if(gameContainer.contains(bullet)) gameContainer.removeChild(bullet);
-            bullets.splice(i,1);
+        if (top < 0) {
+            gameContainer.contains(bullet) && gameContainer.removeChild(bullet);
+            bullets.splice(i, 1);
         }
     });
 
-    // Nivel siguiente
-    if(enemies.length === 0) {
+    // ---- PROGRESIÓN / VICTORIA ----
+    if (enemies.length === 0) {
+
+        // Victoria SOLO al terminar el nivel 5
+        if (level === 5) {
+            endGame(true);
+            return;
+        }
+
         level++;
         levelElement.textContent = level;
         createEnemies();
@@ -172,18 +213,18 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
-// Terminar juego
+// Fin del juego
 function endGame(win) {
     gameOver = true;
     const msg = document.createElement('div');
     msg.classList.add('msg');
+    msg.textContent = win ? '¡GANASTE!' : '¡DERROTA!';
     msg.style.position = 'absolute';
     msg.style.top = '50%';
     msg.style.left = '50%';
     msg.style.transform = 'translate(-50%, -50%)';
     msg.style.color = 'yellow';
-    msg.style.fontSize = '14px';
+    msg.style.fontSize = '16px';
     msg.style.textAlign = 'center';
-    msg.textContent = win ? '¡Victoria!' : '¡Derrota!';
     gameContainer.appendChild(msg);
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Creador de mundos</title>
+    <link href="CSS/style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Creador de mundos</h1>
+    </header>
+
+    <main>
+        <form id="form">
+            <div class="generalSettings">
+                <h3>General Settings</h3>
+                <p>Map Size:</p>
+                <input id="mapSize" type="number" placeholder="Tamaño del mapa" value="64">
+                <p>Max occupied area: </p>
+                <input id="maxOcupedArea" type="number" min="0" max="100" step="0.5" value="80"> %
+            </div>
+            <div class="natureSettings">
+                <h3>Nature</h3>
+                <p>Min zones: </p>
+                <input id="natMinZones" type="number" value="2">
+                <p>Max zones: </p>
+                <input id="natMaxZones" type="number" value="8">
+                <p>Zone max size: </p>
+                <input id="natMaxSize" type="number" value="500">
+                <p>Total max size: </p>
+                <input id="natTotalMaxSize" type="number" value="800">
+            </div>
+            <div class="urbanSettings">
+                <h3>Urban</h3>
+                <p>Min zones: </p>
+                <input id="urbMinZones" type="number" value="4">
+                <p>Max zones: </p>
+                <input id="urbMaxZones" type="number" value="6">
+                <p>Zone max size: </p>
+                <input id="urbMaxSize" type="number" value="100">
+                <p>Total max size: </p>
+                <input id="urbTotalMaxSize" type="number" value="800">
+            </div>
+            <div class="comercialSettings">
+                <h3>Comercial</h3>
+                <p>Min zones: </p>
+                <input id="comMinZones" type="number" value="2">
+                <p>Max zones: </p>
+                <input id="comMaxZones" type="number" value="8">
+                <p>Zone max size: </p>
+                <input id="comMaxSize" type="number" value="50">
+                <p>Total max size: </p>
+                <input id="comTotalMaxSize" type="number" value="800">
+            </div>
+            <button id="generate" type="button">Generate</button>
+        </form>
+
+        <div id="worldContainer">
+            <canvas id="world"></canvas>
+        </div>        
+
+        <script src="JS/script.js"></script>
+    </main>
+</body>
+</html>

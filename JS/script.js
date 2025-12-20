@@ -22,7 +22,8 @@ const misDatos = {
             "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg",
             "https://pngimg.com/uploads/mysql/mysql_PNG9.png",
             "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1280px-PHP-logo.svg.png",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1154px-Laravel.svg.png"
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1154px-Laravel.svg.png",
+            "https://dl.flathub.org/media/org/godotengine/Godot.desktop/ac7fa03a5260254f610d9d8054722758/icons/128x128@2/org.godotengine.Godot.desktop.png"
         ]
     },
     experiencia: [
@@ -37,8 +38,8 @@ const misDatos = {
     ],
     proyectos: [
         {
-            img: "",
-            nombre: { es: "Creador de Estructuras", en: "Structure Builder", de: "Struktur-Builder", fr: "Constructeur de Structures", jp: "構造ビルダー" },
+            img: "https://buildinglevelsl.com/wp-content/uploads/2024/04/cropped-Building-Level-Rounded.webp",
+            nombre: { es: "Gestor de Estructuras", en: "structures manager", de: "Strukturmanager", fr: "responsable des structures", jp: "構造管理者" },
             descripcion: {
                 es: "Aplicación web para crear y gestionar estructuras de edificios, permitiendo añadir propietarios a puertas específicas y visualizar la distribución del edificio.",
                 en: "Web application to create and manage building structures, allowing owners to be assigned to specific doors and visualize the building layout.",
@@ -51,16 +52,29 @@ const misDatos = {
         },
         {
             img: "https://dl.flathub.org/media/org/godotengine/Godot.desktop/ac7fa03a5260254f610d9d8054722758/icons/128x128@2/org.godotengine.Godot.desktop.png",
-            nombre: { es: "Aventura sencilla en Godot", en: "Simple adventure in Godot", de: "Einfaches Abenteuer in Godot", fr: "Une aventure simple dans Godot", jp: "ゴドーのシンプルな冒険" },
+            nombre: {es: "Knigth's Quest", en: "Knigth's Quest", de: "Knigth's Quest", fr: "Knigth's Quest", jp: "ナイツクエスト" },
             descripcion: {
-                es: "¡Un plataformer sencillo realizado dentro de Godot Engine!",
-                en: "A simple platformer made inside the Godot Engine!",
-                de: "Ein simples Jump'n'Run-Spiel, entwickelt mit der Godot-Engine!",
-                fr: "Un jeu de plateforme simple réalisé avec le moteur Godot !",
-                jp: "Godot エンジンで作られたシンプルなプラットフォーム ゲームです。"
+                es: "Un plataformer sencillo desarrollado en Godot Engine, con niveles desafiantes y mecánicas clásicas de salto y plataformas.",
+                en: "A simple platformer developed in Godot Engine, featuring challenging levels and classic jumping and platforming mechanics.",
+                de: "Ein einfaches Jump'n'Run-Spiel entwickelt mit Godot Engine, mit herausfordernden Levels und klassischen Sprung- und Plattformmechaniken.",
+                fr: "Un jeu de plateforme simple développé avec Godot Engine, proposant des niveaux stimulants et des mécaniques classiques de saut et de plateformes.",
+                jp: "Godot エンジンで開発されたシンプルなプラットフォーマーで、挑戦的なレベルとクラシックなジャンプ・プラットフォームの操作が特徴です。"
+            },
+            tecnologias: ["Godot Engine", "GDScript"],
+            enlace: "PROYECTS/GodotGame/index.html"
+        },
+        {
+            img: "https://img.itch.zone/aW1nLzQzNDIxOTgucG5n/original/TDmrTl.png",
+            nombre: { es: "Generador de mundos", en: "World Generator", de: "Weltgenerator", fr: "Générateur de mondes", jp: "ワールドジェネレーター" },
+            descripcion: {
+                es: "Una herramienta que genera mundos de forma procedural, creando mapas, terrenos y escenarios únicos en cada ejecución.",
+                en: "A tool that procedurally generates worlds, creating unique maps, terrains, and scenarios on each run.",
+                de: "Ein Tool zur prozeduralen Generierung von Welten, das bei jedem Durchlauf einzigartige Karten, Gelände und Szenarien erstellt.",
+                fr: "Un outil qui génère des mondes de manière procédurale, créant des cartes, terrains et scénarios uniques à chaque exécution.",
+                jp: "マップ、地形、シナリオをプロシージャルに生成し、毎回ユニークな世界を作り出すツールです。"
             },
             tecnologias: ["HTML", "CSS", "JavaScript"],
-            enlace: "PROYECTS/GodotGame/index.html"
+            enlace: "PROYECTS/WorldGenerator/index.html"
         },
         {
             img: "https://i.pinimg.com/originals/7c/24/f7/7c24f7242948e794c362041b23d221aa.png",
@@ -80,10 +94,10 @@ const misDatos = {
 
 /* Textos extras del HTML */
 const textos = {
-    aboutMe: { es: "Sobre mí", en: "About Me", de: "Über mich", fr: "À propos de moi", ja: "自己紹介" },
-    frameWorks: { es: "Frameworks en los que trabajo", en: "Frameworks I Work With", de: "Frameworks, mit denen ich arbeite", fr: "Frameworks sur lesquels je travaille", ja: "使用しているフレームワーク" },
-    expTxt: { es: "Experiencia Laboral", en: "Work Experience", de: "Berufserfahrung", fr: "Expérience professionnelle", ja: "職務経験" },
-    projTxt: { es: "Proyectos", en: "Projects", de: "Projekte", fr: "Projets", ja: "プロジェクト" }
+    aboutMe: { es: "Sobre mí", en: "About Me", de: "Über mich", fr: "À propos de moi", jp: "自己紹介" },
+    frameWorks: { es: "Frameworks en los que trabajo", en: "Frameworks I Work With", de: "Frameworks, mit denen ich arbeite", fr: "Frameworks sur lesquels je travaille", jp: "使用しているフレームワーク" },
+    expTxt: { es: "Experiencia Laboral", en: "Work Experience", de: "Berufserfahrung", fr: "Expérience professionnelle", jp: "職務経験" },
+    projTxt: { es: "Proyectos", en: "Projects", de: "Projekte", fr: "Projets", jp: "プロジェクト" }
 };
 
 /* Funcion de renderizado general */
